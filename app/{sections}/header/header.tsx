@@ -89,13 +89,7 @@ function Header() {
         }}
         className='app__header-circles'
       >
-        {[
-          '/flutter.png',
-          '/redux.png',
-          '/sass.png',
-          '/flutter.png',
-          '/redux.png',
-        ].map((item, index) => {
+        {['/flutter.png', '/redux.png', '/sass.png'].map((item, index) => {
           return (
             <div className='circle-cmp app__flex' key={item + index}>
               <div>
