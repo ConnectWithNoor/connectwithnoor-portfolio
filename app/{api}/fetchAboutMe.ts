@@ -8,7 +8,7 @@ export async function fetchAboutMe() {
     }
   `;
 
-  const aboutme: TypeAboutMe[] = await sanityClient.fetch(query);
+  const aboutme: AboutMeType[] = await sanityClient.fetch(query);
 
   return aboutme;
 }
