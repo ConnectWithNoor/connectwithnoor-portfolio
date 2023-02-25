@@ -33,7 +33,7 @@ function NavbarResponsive() {
           <motion.div
             variants={motionVariance}
             initial='hidden'
-            whileInView='show'
+            animate='show'
             exit='exit'
           >
             <HiX onClick={() => setToggle(false)} />
