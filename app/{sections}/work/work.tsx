@@ -39,7 +39,7 @@ function WorkSection() {
   }, []);
 
   return (
-    <SectionWrapper idName='work'>
+    <SectionWrapper idName='work' className='app__primarybg'>
       <div>
         {/* heading */}
         <h2 className='head-text'>

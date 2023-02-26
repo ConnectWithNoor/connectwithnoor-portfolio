@@ -12,7 +12,7 @@ import './about.scss';
 function AboutSection() {
   const aboutMeData = use(fetchAboutMe());
   return (
-    <SectionWrapper idName='about'>
+    <SectionWrapper idName='about' className='app__whitebg'>
       <div>
         {/* heading */}
         <h2 className='head-text'>

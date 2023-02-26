@@ -3,12 +3,12 @@ import { groq } from 'next-sanity';
 
 export async function fetchExperiences() {
   const query = groq`
-  *[_type == "work"] {
-      _id, title, description, codeLink, projectLink, imageUrl, tags 
-    }
+   *[_type == "experience"] {
+  _id, year, works
+}
   `;
 
-  const skills: WorkType[] = await sanityClient.fetch(query);
+  const experience: ExperienceType[] = await sanityClient.fetch(query);
 
-  return skills;
+  return experience;
 }

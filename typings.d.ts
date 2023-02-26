@@ -22,6 +22,12 @@ type SkillType = {
   bgColor: string;
 };
 
+type ExperienceType = {
+  _id: string;
+  year: string;
+  works: { name: string; company: string; desc: string }[];
+};
+
 interface Image {
   _type: 'image';
   asset: {
