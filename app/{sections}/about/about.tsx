@@ -1,13 +1,13 @@
 'use client';
 
 import { fetchAboutMe } from '@/app/{api}/fetchAboutMe';
+import { use } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import './about.scss';
 
-import { use } from 'react';
 import { urlFor } from '@/lib/sanity';
 import { SectionWrapper } from '@/app/{components}';
+import './about.scss';
 
 function AboutSection() {
   const aboutMeData = use(fetchAboutMe());

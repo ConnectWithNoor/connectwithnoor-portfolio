@@ -15,6 +15,13 @@ type WorkType = {
   tags: string[];
 };
 
+type SkillType = {
+  _id: string;
+  icon: Image;
+  name: string;
+  bgColor: string;
+};
+
 interface Image {
   _type: 'image';
   asset: {

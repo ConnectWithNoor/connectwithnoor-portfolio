@@ -38,15 +38,20 @@ function NavbarResponsive() {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {['home', 'about', 'work', 'skills', 'contact'].map(
-                (item, index) => (
-                  <li key={item + index}>
-                    <a href={`#${item}`} onClick={() => setToggle(false)}>
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                'home',
+                'about',
+                'work',
+                'skills',
+                'testinomials',
+                'contact',
+              ].map((item, index) => (
+                <li key={item + index}>
+                  <a href={`#${item}`} onClick={() => setToggle(false)}>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </motion.div>
         )}

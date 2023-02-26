@@ -14,12 +14,14 @@ function Navbar() {
       </div>
       {/* nav */}
       <ul className='app__navbar-links'>
-        {['home', 'about', 'work', 'skills', 'contact'].map((item, index) => (
-          <li key={item + index} className='app__flex p-text'>
-            <div />
-            <a href={`#${item}`}>{item}</a>
-          </li>
-        ))}
+        {['home', 'about', 'work', 'skills', 'testinomials', 'contact'].map(
+          (item, index) => (
+            <li key={item + index} className='app__flex p-text'>
+              <div />
+              <a href={`#${item}`}>{item}</a>
+            </li>
+          )
+        )}
       </ul>
       <NavbarResponsive />
     </nav>
