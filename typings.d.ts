@@ -28,6 +28,14 @@ type ExperienceType = {
   works: { name: string; company: string; desc: string }[];
 };
 
+type TestimonialType = {
+  _id: string;
+  name: string;
+  imageUrl: Image;
+  company: string;
+  feedback: string;
+};
+
 interface Image {
   _type: 'image';
   asset: {

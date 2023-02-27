@@ -8,15 +8,15 @@ import './navbar.scss';
 const motionVariance: Variants = {
   hidden: {
     opacity: 0,
-    x: 300,
+    y: 100,
   },
   show: {
-    x: 0,
+    y: 0,
     opacity: 1,
     transition: { duration: 0.85, ease: 'easeOut' },
   },
   exit: {
-    x: 300,
+    y: 100,
     opacity: 0,
     transition: { duration: 0.85, ease: 'easeOut' },
   },

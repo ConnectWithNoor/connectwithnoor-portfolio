@@ -68,7 +68,7 @@ function WorkSection() {
         </div>
 
         <motion.div
-          animate={animateCard}
+          whileInView={animateCard}
           transition={{ duration: 0.5, delayChildren: 0.5 }}
           className='app__work-portfolio'
         >
