@@ -19,7 +19,7 @@ function AboutSection() {
           I Know that
           <span> Good Apps </span>
           <br />
-          means Good Buusiness
+          means Good Business
         </h2>
 
         <div className='app__profiles'>

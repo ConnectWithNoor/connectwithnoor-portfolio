@@ -21,4 +21,11 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
   title: 'Techsume | Developer Resume',
+  description:
+    'Developer resume to showcase your skills, portfolio and testimonials to potential clients',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };

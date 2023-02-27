@@ -7,7 +7,6 @@
 .app__testimonial-item {
   width: 60%;
   min-height: 320px;
-  height: 320px;
   background-color: var(--white-color);
   display: flex;
   flex-direction: row;
@@ -49,7 +48,8 @@
 
 .app__testimonial-content {
   flex: 1;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   padding: 0 2rem;
   text-align: left;
 
