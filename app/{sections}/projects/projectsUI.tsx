@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 
 type Props = {
-  filterWork: WorkType[];
+  filteredProject: ProjectType[];
 };
 
 const divVariant: Variants = {
@@ -41,11 +41,11 @@ const IconVariant: Variants = {
   },
 };
 
-function WorkUI({ filterWork }: Props) {
+function ProjectsUI({ filteredProject }: Props) {
   return (
     <div className='app__work-portfolio'>
       <AnimatePresence>
-        {filterWork.map((work, index) => {
+        {filteredProject.map((work, index) => {
           return (
             // work item container
             <MotionDivWrapper
@@ -96,7 +96,7 @@ function WorkUI({ filterWork }: Props) {
                 {/* tags */}
                 <div className='app__work-tag app__flex'>
                   <p className='p-text' style={{ textTransform: 'capitalize' }}>
-                    {work.tags[0]}
+                    {work.tags[0].name}
                   </p>
                 </div>
               </div>
@@ -108,4 +108,4 @@ function WorkUI({ filterWork }: Props) {
   );
 }
 
-export default WorkUI;
+export default ProjectsUI;

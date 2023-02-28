@@ -5,7 +5,7 @@ import {
   Header,
   Skills,
   Testinomials,
-  Work,
+  Projects,
 } from './{sections}';
 
 import './page.scss';
@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <About />
-      <Work />
+      <Projects />
       <Skills />
       <Testinomials />
       <Footer />

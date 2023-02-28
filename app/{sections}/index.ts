@@ -3,6 +3,6 @@ import Footer from './footer/footer';
 import Header from './header/header';
 import Skills from './skills/skills';
 import Testinomials from './testimonials/testimonials';
-import Work from './work/work';
+import Projects from './projects/projects';
 
-export { About, Footer, Header, Skills, Testinomials, Work };
+export { About, Footer, Header, Skills, Testinomials, Projects };

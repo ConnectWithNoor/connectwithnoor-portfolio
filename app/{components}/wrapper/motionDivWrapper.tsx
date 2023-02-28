@@ -11,6 +11,7 @@ type Props = {
 function MotionDivWrapper({ variants, children, className }: Props) {
   return (
     <motion.div
+      layout
       variants={variants}
       initial='hidden'
       whileInView='show'

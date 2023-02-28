@@ -1,7 +1,7 @@
 export const NavList = [
   'home',
   'about',
-  'work',
+  'projects',
   'skills',
   'testimonials',
   'contact',

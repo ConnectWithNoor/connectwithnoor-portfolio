@@ -5,14 +5,14 @@ type AboutMeType = {
   imageUrl: Image;
 };
 
-type WorkType = {
+type ProjectType = {
   _id: string;
   description: string;
   title: string;
   imageUrl: Image;
   projectLink: string;
   codeLink: string;
-  tags: string[];
+  tags: { name: string; _id: string }[];
 };
 
 type SkillType = {
@@ -25,7 +25,7 @@ type SkillType = {
 type ExperienceType = {
   _id: string;
   year: string;
-  works: { name: string; company: string; desc: string }[];
+  works: { _id: string; position: string; company: string; desc: string }[];
 };
 
 type TestimonialType = {

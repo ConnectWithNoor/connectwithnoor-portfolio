@@ -114,20 +114,20 @@ function Skills() {
 
                   <div className='app__skills-exp-works'>
                     {experience.works.map((work) => (
-                      <div key={work.name}>
+                      <div key={work._id}>
                         <MotionDivWrapper
                           variants={rightVariant}
                           className='app__skills-exp-work'
                         >
-                          <div data-tooltip-id={work.name}>
-                            <h4 className='bold-text'>{work.name}</h4>
+                          <div data-tooltip-id={work._id}>
+                            <h4 className='bold-text'>{work.position}</h4>
 
                             <p className='p-text'>{work.company}</p>
                           </div>
                         </MotionDivWrapper>
 
                         <TooltipWrapper
-                          id={work.name}
+                          id={work._id}
                           className='skills-tooltip'
                         >
                           {work.desc}

@@ -3,8 +3,10 @@ import { groq } from 'next-sanity';
 
 export async function fetchExperiences() {
   const query = groq`
-   *[_type == "experience"] {
-  _id, year, works
+     *[_type == "experiences"] {
+  _id, year, works[] -> {
+    _id, position, desc, company
+  }
 }
   `;
 

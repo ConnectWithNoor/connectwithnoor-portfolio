@@ -3,35 +3,39 @@
 import { useState, useEffect } from 'react';
 
 import { SectionWrapper } from '@/app/{components}';
-import WorkUI from './workUI';
-import { fetchWork } from '@/app/{api}/fetchWork';
+import { fetchProjects } from '@/app/{api}/fetchProjects';
 
 import { WorkList } from '@/app/{utils}/constants';
-import './work.scss';
+import './projects.scss';
+import ProjectsUI from './projectsUI';
 
-function WorkSection() {
+function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [workData, setWorkData] = useState<WorkType[]>([]);
-  const [filterWork, setFilterWork] = useState<WorkType[]>([]);
+  const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
+  const [filteredProject, setFilteredProject] = useState<ProjectType[]>([]);
 
   const handleWorkFilter = (item: string) => {
     setActiveFilter(item);
 
-    setFilterWork(workData.filter((work) => work.tags.includes(item)));
+    setFilteredProject(
+      projectsData.filter((project) =>
+        project.tags.some((tag) => tag.name === item)
+      )
+    );
   };
 
   useEffect(() => {
     const fetch = async () => {
-      const workData = await fetchWork();
-      setWorkData(workData);
-      setFilterWork(workData);
+      const projectsData = await fetchProjects();
+      setProjectsData(projectsData);
+      setFilteredProject(projectsData);
     };
 
     fetch();
   }, []);
 
   return (
-    <SectionWrapper idName='work' className='app__primarybg'>
+    <SectionWrapper idName='projects' className='app__primarybg'>
       <div>
         {/* heading */}
         <h2 className='head-text'>
@@ -57,10 +61,10 @@ function WorkSection() {
           })}
         </div>
 
-        <WorkUI filterWork={filterWork} />
+        <ProjectsUI filteredProject={filteredProject} />
       </div>
     </SectionWrapper>
   );
 }
 
-export default WorkSection;
+export default ProjectsSection;
