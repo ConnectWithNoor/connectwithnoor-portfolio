@@ -3,6 +3,7 @@ import {
   MotionDivWrapper,
   MotionImgWrapper,
 } from '@/app/{components}';
+import { HeaderImagesList } from '@/app/{utils}/constants';
 import { Variants } from 'framer-motion';
 import Image from 'next/image';
 
@@ -105,7 +106,7 @@ function Header() {
           variants={variantRight}
           className='app__header-circles'
         >
-          {['/flutter.png', '/redux.png', '/sass.png'].map((item, index) => {
+          {HeaderImagesList.map((item, index) => {
             return (
               <div className='circle-cmp app__flex' key={item + index}>
                 <div>

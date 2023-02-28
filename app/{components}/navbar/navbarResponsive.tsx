@@ -5,6 +5,7 @@ import { AnimatePresence, Variants } from 'framer-motion';
 
 import './navbar.scss';
 import MotionDivWrapper from '../wrapper/motionDivWrapper';
+import { NavList } from '@/app/{utils}/constants';
 
 const motionVariance: Variants = {
   hidden: {
@@ -34,14 +35,7 @@ function NavbarResponsive() {
           <MotionDivWrapper variants={motionVariance}>
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {[
-                'home',
-                'about',
-                'work',
-                'skills',
-                'testinomials',
-                'contact',
-              ].map((item, index) => (
+              {NavList.map((item, index) => (
                 <li key={item + index}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>
                     {item}
