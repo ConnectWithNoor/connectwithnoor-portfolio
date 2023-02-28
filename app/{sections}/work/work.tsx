@@ -2,30 +2,57 @@
 
 import { useState, useEffect } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
-import { motion } from 'framer-motion';
+import { AnimatePresence, Variants } from 'framer-motion';
 import { urlFor } from '@/lib/sanity';
 
-import { SectionWrapper } from '@/app/{components}';
+import { MotionDivWrapper, SectionWrapper } from '@/app/{components}';
 import { fetchWork } from '@/app/{api}/fetchWork';
 
 import './work.scss';
 import Image from 'next/image';
 
+const divVariant: Variants = {
+  hidden: { y: -50, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.25, delayChildren: 0.5 },
+  },
+  exit: { y: 50, opacity: 0 },
+};
+
+const hoverVariant: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  hover: {
+    opacity: 1,
+    transition: {
+      duration: 0.25,
+      ease: 'easeInOut',
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const IconVariant: Variants = {
+  hover: {
+    scale: 0.9,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
 function WorkSection() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [workData, setWorkData] = useState<WorkType[]>([]);
   const [filterWork, setFilterWork] = useState<WorkType[]>([]);
 
   const handleWorkFilter = (item: string) => {
     setActiveFilter(item);
 
-    setAnimateCard({ y: 100, opacity: 0 });
-
-    setTimeout(() => {
-      setAnimateCard({ y: 0, opacity: 1 });
-      setFilterWork(workData.filter((work) => work.tags.includes(item)));
-    }, 500);
+    setFilterWork(workData.filter((work) => work.tags.includes(item)));
   };
 
   useEffect(() => {
@@ -67,85 +94,75 @@ function WorkSection() {
           )}
         </div>
 
-        <motion.div
-          whileInView={animateCard}
-          transition={{ duration: 0.5, delayChildren: 0.5 }}
-          className='app__work-portfolio'
-        >
-          {filterWork.map((work, index) => {
-            return (
-              // work item container
-              <div key={index} className='app__work-item app__flex'>
-                <div className='app__work-img app__flex'>
-                  {/* image */}
-                  <Image
-                    src={urlFor(work.imageUrl).url()}
-                    alt={work.title}
-                    fill
-                  />
+        <div className='app__work-portfolio'>
+          <AnimatePresence>
+            {filterWork.map((work, index) => {
+              return (
+                // work item container
+                <MotionDivWrapper
+                  variants={divVariant}
+                  key={index}
+                  className='app__work-item app__flex'
+                >
+                  <div className='app__work-img app__flex'>
+                    {/* image */}
+                    <Image
+                      src={urlFor(work.imageUrl).url()}
+                      alt={work.title}
+                      fill
+                    />
 
-                  {/* on hover effects */}
+                    {/* on hover effects */}
 
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.25,
-                      ease: 'easeInOut',
-                      staggerChildren: 0.5,
-                    }}
-                    className='app__work-hover app__flex'
-                  >
-                    <a href={work.projectLink} target='_blank' rel='noreferrer'>
-                      <motion.div
-                        initial={{ scale: 1 }}
-                        whileInView={{ scale: 1 }}
-                        whileHover={{ scale: 0.9 }}
-                        transition={{
-                          duration: 0.25,
-                        }}
-                        className='app__flex'
-                      >
-                        <AiFillEye />
-                      </motion.div>
-                    </a>
-
-                    <a href={work.codeLink} target='_blank' rel='noreferrer'>
-                      <motion.div
-                        initial={{ scale: 1 }}
-                        whileInView={{ scale: 1 }}
-                        whileHover={{ scale: 0.9 }}
-                        transition={{
-                          duration: 0.25,
-                        }}
-                        className='app__flex'
-                      >
-                        <AiFillGithub />
-                      </motion.div>
-                    </a>
-                  </motion.div>
-                </div>
-
-                {/* title and description and tags*/}
-                <div className='app__work-content app__flex'>
-                  <h4 className='bold-text'>{work.title}</h4>
-                  <p className='p_text' style={{ marginTop: 10 }}>
-                    {work.description}
-                  </p>
-                  {/* tags */}
-                  <div className='app__work-tag app__flex'>
-                    <p
-                      className='p-text'
-                      style={{ textTransform: 'capitalize' }}
+                    <MotionDivWrapper
+                      variants={hoverVariant}
+                      className='app__work-hover app__flex'
                     >
-                      {work.tags[0]}
-                    </p>
+                      <a
+                        href={work.projectLink}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <MotionDivWrapper
+                          variants={IconVariant}
+                          className='app__flex'
+                        >
+                          <AiFillEye />
+                        </MotionDivWrapper>
+                      </a>
+
+                      <a href={work.codeLink} target='_blank' rel='noreferrer'>
+                        <MotionDivWrapper
+                          variants={IconVariant}
+                          className='app__flex'
+                        >
+                          <AiFillGithub />
+                        </MotionDivWrapper>
+                      </a>
+                    </MotionDivWrapper>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
+
+                  {/* title and description and tags*/}
+                  <div className='app__work-content app__flex'>
+                    <h4 className='bold-text'>{work.title}</h4>
+                    <p className='p_text' style={{ marginTop: 10 }}>
+                      {work.description}
+                    </p>
+                    {/* tags */}
+                    <div className='app__work-tag app__flex'>
+                      <p
+                        className='p-text'
+                        style={{ textTransform: 'capitalize' }}
+                      >
+                        {work.tags[0]}
+                      </p>
+                    </div>
+                  </div>
+                </MotionDivWrapper>
+              );
+            })}
+          </AnimatePresence>
+        </div>
       </div>
     </SectionWrapper>
   );

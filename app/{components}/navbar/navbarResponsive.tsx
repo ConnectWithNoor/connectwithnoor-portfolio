@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { AnimatePresence, Variants } from 'framer-motion';
 
 import './navbar.scss';
+import MotionDivWrapper from '../wrapper/motionDivWrapper';
 
 const motionVariance: Variants = {
   hidden: {
@@ -30,12 +31,7 @@ function NavbarResponsive() {
       <HiMenuAlt4 onClick={() => setToggle(true)} />
       <AnimatePresence>
         {toggle && (
-          <motion.div
-            variants={motionVariance}
-            initial='hidden'
-            animate='show'
-            exit='exit'
-          >
+          <MotionDivWrapper variants={motionVariance}>
             <HiX onClick={() => setToggle(false)} />
             <ul>
               {[
@@ -53,7 +49,7 @@ function NavbarResponsive() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </MotionDivWrapper>
         )}
       </AnimatePresence>
     </div>

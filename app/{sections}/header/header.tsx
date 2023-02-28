@@ -1,29 +1,75 @@
-'use client';
-import { SectionWrapper } from '@/app/{components}';
-import { motion } from 'framer-motion';
+import {
+  SectionWrapper,
+  MotionDivWrapper,
+  MotionImgWrapper,
+} from '@/app/{components}';
+import { Variants } from 'framer-motion';
 import Image from 'next/image';
 
 import './header.scss';
+
+const variantLeft: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -100,
+  },
+
+  show: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const variantCenter: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const variantRight: Variants = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const variantImg: Variants = {
+  hidden: {
+    scale: 0,
+  },
+  show: {
+    scale: 1,
+    transition: {
+      duration: 1,
+      ease: 'easeInOut',
+    },
+  },
+};
 
 function Header() {
   return (
     <SectionWrapper idName='home'>
       <div className='app__header app__flex'>
         {/* greetings, name and job title*/}
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: -100,
-          }}
-          whileInView={{
-            x: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-            },
-          }}
-          className='app__header-info'
-        >
+        <MotionDivWrapper variants={variantLeft} className='app__header-info'>
           <div className='app__header-badge'>
             {/* greeting + name */}
             <div className='badge-cmp app__flex'>
@@ -39,56 +85,24 @@ function Header() {
               <p className='p-text'>Freelancer</p>
             </div>
           </div>
-        </motion.div>
+        </MotionDivWrapper>
 
         {/* center image */}
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-              delayChildren: 0.5,
-            },
-          }}
-          className='app__header-img'
-        >
+        <MotionDivWrapper variants={variantCenter} className='app__header-img'>
           <div>
             <Image src='/profile.png' alt='profile' fill />
           </div>
-          <motion.img
-            initial={{
-              scale: 0,
-            }}
-            whileInView={{
-              scale: 1,
-              transition: {
-                duration: 1,
-                ease: 'easeInOut',
-              },
-            }}
+          <MotionImgWrapper
+            variants={variantImg}
             src='/circle.svg'
             className='overlay_circle'
           />
-        </motion.div>
+        </MotionDivWrapper>
 
         {/* tech icon circles */}
 
-        <motion.div
-          initial={{
-            scale: 0,
-            opacity: 0,
-          }}
-          whileInView={{
-            scale: 1,
-            opacity: 1,
-            transition: {
-              duration: 1,
-              ease: 'easeInOut',
-            },
-          }}
+        <MotionDivWrapper
+          variants={variantRight}
           className='app__header-circles'
         >
           {['/flutter.png', '/redux.png', '/sass.png'].map((item, index) => {
@@ -100,7 +114,7 @@ function Header() {
               </div>
             );
           })}
-        </motion.div>
+        </MotionDivWrapper>
       </div>
     </SectionWrapper>
   );

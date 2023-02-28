@@ -1,18 +1,68 @@
-'use client';
-
 import { fetchSkills } from '@/app/{api}/fetchSkills';
 import { fetchExperiences } from '@/app/{api}/fetchExperiences';
 
 import { use } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Tooltip } from 'react-tooltip';
+import { Variants } from 'framer-motion';
 
 import { urlFor } from '@/lib/sanity';
-import { SectionWrapper } from '@/app/{components}';
+import {
+  MotionDivWrapper,
+  SectionWrapper,
+  TooltipWrapper,
+} from '@/app/{components}';
 
 import './skills.scss';
 import 'react-tooltip/dist/react-tooltip.css';
+
+const leftVariant: Variants = {
+  hidden: {
+    x: -30,
+    opacity: 0,
+    scale: 0.7,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.25,
+      type: 'tween',
+    },
+  },
+  hover: { scale: 1.1 },
+};
+
+const rightContainerVariant: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.25,
+      staggerChildren: 0.25,
+      type: 'tween',
+    },
+  },
+};
+
+const rightVariant: Variants = {
+  hidden: {
+    x: 30,
+    opacity: 0,
+    scale: 0.7,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.25,
+      type: 'tween',
+    },
+  },
+};
 
 function Skills() {
   const skillsData = use(fetchSkills());
@@ -24,17 +74,11 @@ function Skills() {
         <h2 className='head-text'>Skills & Experience</h2>
         <div className='app__skills-container'>
           {/* left skills part */}
-          <motion.div className='app__skills-list'>
+          <div className='app__skills-list'>
             {skillsData.map((skill, index) => (
-              <motion.div
+              <MotionDivWrapper
                 key={skill._id + index}
-                initial={{
-                  opacity: 0,
-                }}
-                whileInView={{
-                  opacity: 1,
-                }}
-                transition={{ duration: 0.5 }}
+                variants={leftVariant}
                 className='app__skills-item app__flex'
               >
                 <div
@@ -51,15 +95,16 @@ function Skills() {
                 </div>
 
                 <p className='p-text'>{skill.name}</p>
-              </motion.div>
+              </MotionDivWrapper>
             ))}
-          </motion.div>
+          </div>
 
           {/* right experience part */}
-          <motion.div className='app__skills-exp'>
+          <div className='app__skills-exp'>
             {experiencesData.map((experience) => {
               return (
-                <motion.div
+                <MotionDivWrapper
+                  variants={rightContainerVariant}
                   key={experience._id}
                   className='app__skills-exp-item'
                 >
@@ -67,34 +112,33 @@ function Skills() {
                     <p className='bold-text'>{experience.year}</p>
                   </div>
 
-                  <motion.div className='app__skills-exp-works'>
+                  <div className='app__skills-exp-works'>
                     {experience.works.map((work) => (
                       <div key={work.name}>
-                        <motion.div
-                          initial={{
-                            opacity: 0,
-                          }}
-                          whileInView={{
-                            opacity: 1,
-                          }}
-                          transition={{ duration: 0.5 }}
+                        <MotionDivWrapper
+                          variants={rightVariant}
                           className='app__skills-exp-work'
-                          data-tooltip-id={work.name}
                         >
-                          <h4 className='bold-text'>{work.name}</h4>
+                          <div data-tooltip-id={work.name}>
+                            <h4 className='bold-text'>{work.name}</h4>
 
-                          <p className='p-text'>{work.company}</p>
-                        </motion.div>
-                        <Tooltip id={work.name} className='skills-tooltip'>
+                            <p className='p-text'>{work.company}</p>
+                          </div>
+                        </MotionDivWrapper>
+
+                        <TooltipWrapper
+                          id={work.name}
+                          className='skills-tooltip'
+                        >
                           {work.desc}
-                        </Tooltip>
+                        </TooltipWrapper>
                       </div>
                     ))}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </MotionDivWrapper>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </SectionWrapper>

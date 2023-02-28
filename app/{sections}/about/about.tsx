@@ -1,16 +1,31 @@
-'use client';
-
 import { fetchAboutMe } from '@/app/{api}/fetchAboutMe';
 import { use } from 'react';
-import { motion } from 'framer-motion';
+import { Variants } from 'framer-motion';
 import Image from 'next/image';
 
 import { urlFor } from '@/lib/sanity';
-import { SectionWrapper } from '@/app/{components}';
+import { SectionWrapper, MotionDivWrapper } from '@/app/{components}';
 import './about.scss';
+
+const divVariant: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.7,
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      type: 'tween',
+    },
+  },
+  hover: { scale: 1.1 },
+};
 
 function AboutSection() {
   const aboutMeData = use(fetchAboutMe());
+
   return (
     <SectionWrapper idName='about' className='app__whitebg'>
       <div>
@@ -23,25 +38,11 @@ function AboutSection() {
         </h2>
 
         <div className='app__profiles'>
-          {aboutMeData.map((item, index) => {
+          {aboutMeData.map((item) => {
             return (
-              <motion.div
-                key={item.title + index}
-                initial={{
-                  opacity: 0,
-                  scale: 0.7,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                whileHover={{
-                  scale: 1.1,
-                }}
-                transition={{
-                  duration: 0.5,
-                  type: 'tween',
-                }}
+              <MotionDivWrapper
+                key={item._id}
+                variants={divVariant}
                 className='app__profile-item'
               >
                 <div>
@@ -58,7 +59,7 @@ function AboutSection() {
                 <p className='p-text' style={{ marginTop: '10px' }}>
                   {item.description}
                 </p>
-              </motion.div>
+              </MotionDivWrapper>
             );
           })}
         </div>
