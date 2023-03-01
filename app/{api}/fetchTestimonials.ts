@@ -3,9 +3,9 @@ import { groq } from 'next-sanity';
 
 export async function fetchTestimonials() {
   const query = groq`
-  *[_type == "testinomial"] {
-    _id, name, imageUrl, company, feedback
-  }
+   *[_type == "testimonials"] {
+   _id, name, imageUrl, feedback, company
+ }
   `;
 
   const testimonials: TestimonialType[] = await sanityClient.fetch(query);
