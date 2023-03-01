@@ -17,15 +17,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     &-container {
       position: relative;
-      width: 90px;
-      height: 20px;
+      width: 200px;
+      font-size: 1.4rem;
+      font-weight: 600;
+
+      span {
+        color: var(--secondary-color);
+      }
 
       @media screen and (min-width: 2000px) {
-        width: 180px;
-        height: 40px;
+        width: 250px;
       }
     }
   }

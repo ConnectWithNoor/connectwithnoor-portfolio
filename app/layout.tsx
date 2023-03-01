@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   description:
     'Developer resume to showcase your skills, portfolio and testimonials to potential clients',
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
