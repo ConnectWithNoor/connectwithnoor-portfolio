@@ -1,5 +1,4 @@
 import { fetchAboutMe } from '@/app/{api}/fetchAboutMe';
-import { use } from 'react';
 import { Variants } from 'framer-motion';
 import Image from 'next/image';
 

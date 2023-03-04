@@ -1,12 +1,12 @@
 'use client';
 
-import { MotionDivWrapper } from '@/app/{components}';
-
-import { urlFor } from '@/lib/sanity';
 import { AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { useState } from 'react';
+
+import { MotionDivWrapper } from '@/app/{components}';
+import { urlFor } from '@/lib/sanity';
 
 type Props = {
   projectsData: ProjectType[];

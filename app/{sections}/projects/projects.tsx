@@ -1,9 +1,10 @@
 import { SectionWrapper } from '@/app/{components}';
 import { fetchProjects } from '@/app/{api}/fetchProjects';
 
-import './projects.scss';
 import ProjectsUI from './projectsUI';
 import { fetchTags } from '@/app/{api}/fetchTags';
+
+import './projects.scss';
 
 async function ProjectsSection() {
   const projectsData = await fetchProjects();

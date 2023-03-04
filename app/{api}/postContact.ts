@@ -1,5 +1,4 @@
 import { sanityClient } from '@/lib/sanity';
-import { groq } from 'next-sanity';
 
 type Props = {
   _type: string;
