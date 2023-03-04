@@ -6,7 +6,7 @@ export const config = {
   token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
   projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID,
   apiVersion: '2023-02-25', // 25 Feb 2023
-  useCdn: true,
+  useCdn: false,
 };
 
 export const sanityClient = createClient(config);
