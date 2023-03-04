@@ -1,11 +1,10 @@
 import { NavList } from '@/app/{utils}/constants';
-import Image from 'next/image';
 import localFont from 'next/font/local';
 
 import NavbarResponsive from './navbarResponsive';
 import './navbar.scss';
 
-const epilepsja = localFont({ src: './epilepsja-outline.otf' });
+const epilepsja = localFont({ src: '../../{assets}/epilepsja-outline.otf' });
 
 function Navbar() {
   return (

@@ -1,7 +1,6 @@
 import { fetchSkills } from '@/app/{api}/fetchSkills';
 import { fetchExperiences } from '@/app/{api}/fetchExperiences';
 
-import { use } from 'react';
 import Image from 'next/image';
 import { Variants } from 'framer-motion';
 
@@ -64,9 +63,9 @@ const rightVariant: Variants = {
   },
 };
 
-function Skills() {
-  const skillsData = use(fetchSkills());
-  const experiencesData = use(fetchExperiences());
+async function Skills() {
+  const skillsData = await fetchSkills();
+  const experiencesData = await fetchExperiences();
 
   return (
     <SectionWrapper idName='skills' className='app__whitebg'>

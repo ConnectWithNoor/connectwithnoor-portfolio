@@ -7,5 +7,9 @@ export const NavList = [
   'contact',
 ];
 
-export const WorkList = ['ui/ux', 'web app', 'mobile app', 'react js', 'all'];
-export const HeaderImagesList = ['/flutter.png', '/redux.png', '/sass.png'];
+export const headerConstants = {
+  name: 'Noor M',
+  job_1: 'Web Developer',
+  job_2: 'Freelancer',
+  imagesList: ['/flutter.png', '/redux.png', '/sass.png'],
+};

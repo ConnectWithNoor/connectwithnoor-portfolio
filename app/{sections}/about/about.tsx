@@ -23,8 +23,8 @@ const divVariant: Variants = {
   hover: { scale: 1.1 },
 };
 
-function AboutSection() {
-  const aboutMeData = use(fetchAboutMe());
+async function AboutSection() {
+  const aboutMeData = await fetchAboutMe();
 
   return (
     <SectionWrapper idName='about' className='app__whitebg'>

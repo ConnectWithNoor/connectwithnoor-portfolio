@@ -1,7 +1,11 @@
+'use client';
+
 import { MotionDivWrapper } from '@/app/{components}';
 import { urlFor } from '@/lib/sanity';
-import { Variants } from 'framer-motion';
+import { AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 const motionVariance: Variants = {
   hidden: {
@@ -21,31 +25,65 @@ const motionVariance: Variants = {
 };
 
 type Props = {
-  testimonialsData: TestimonialType;
+  testimonialsData: TestimonialType[];
 };
 
 function TestimonialsUI({ testimonialsData }: Props) {
+  const [index, setIndex] = useState(0);
+
+  const handleClick = (currentIndex: number, direction: 'next' | 'prev') => {
+    let imageIndex: number;
+
+    if (direction === 'prev') {
+      if (currentIndex === 0) {
+        imageIndex = testimonialsData.length - 1;
+      } else {
+        imageIndex = currentIndex - 1;
+      }
+    } else {
+      if (currentIndex === testimonialsData.length - 1) {
+        imageIndex = 0;
+      } else {
+        imageIndex = currentIndex + 1;
+      }
+    }
+    setIndex(imageIndex);
+  };
+
   return (
-    <MotionDivWrapper
-      variants={motionVariance}
-      className='app__testimonial-item app__flex'
-      key={testimonialsData._id}
-    >
-      <div>
-        <Image
-          src={urlFor(testimonialsData.imageUrl).url()}
-          alt={testimonialsData.name}
-          fill
-        />
-      </div>
-      <div className='app__testimonial-content'>
-        <p className='p-text'>{testimonialsData.feedback}</p>
-        <div>
-          <h4 className='bold-text'>{testimonialsData.name}</h4>
-          <h5 className='p-text'>{testimonialsData.company}</h5>
+    <>
+      <AnimatePresence>
+        <MotionDivWrapper
+          variants={motionVariance}
+          className='app__testimonial-item app__flex'
+          key={testimonialsData[index]._id}
+        >
+          <div>
+            <Image
+              src={urlFor(testimonialsData[index].imageUrl).url()}
+              alt={testimonialsData[index].name}
+              fill
+            />
+          </div>
+          <div className='app__testimonial-content'>
+            <p className='p-text'>{testimonialsData[index].feedback}</p>
+            <div>
+              <h4 className='bold-text'>{testimonialsData[index].name}</h4>
+              <h5 className='p-text'>{testimonialsData[index].company}</h5>
+            </div>
+          </div>
+        </MotionDivWrapper>
+      </AnimatePresence>
+      <div className='app__testimonial-btns app__flex'>
+        <div className='app__flex' onClick={() => handleClick(index, 'prev')}>
+          <HiChevronLeft />
+        </div>
+
+        <div className='app__flex' onClick={() => handleClick(index, 'next')}>
+          <HiChevronRight />
         </div>
       </div>
-    </MotionDivWrapper>
+    </>
   );
 }
 

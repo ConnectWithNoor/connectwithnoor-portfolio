@@ -3,7 +3,7 @@ import {
   MotionDivWrapper,
   MotionImgWrapper,
 } from '@/app/{components}';
-import { HeaderImagesList } from '@/app/{utils}/constants';
+import { headerConstants } from '@/app/{utils}/constants';
 import { Variants } from 'framer-motion';
 import Image from 'next/image';
 
@@ -77,13 +77,13 @@ function Header() {
               <span>👋</span>
               <div style={{ marginLeft: 20 }}>
                 <p className='p-text'>Hello, I am</p>
-                <h1 className='head-text'>Noor M</h1>
+                <h1 className='head-text'>{headerConstants.name}</h1>
               </div>
             </div>
             {/* job title */}
             <div className='tag-cmp app__flex'>
-              <p className='p-text'>Web Developer</p>
-              <p className='p-text'>Freelancer</p>
+              <p className='p-text'>{headerConstants.job_1}</p>
+              <p className='p-text'>{headerConstants.job_2}</p>
             </div>
           </div>
         </MotionDivWrapper>
@@ -106,7 +106,7 @@ function Header() {
           variants={variantRight}
           className='app__header-circles'
         >
-          {HeaderImagesList.map((item, index) => {
+          {headerConstants.imagesList.map((item, index) => {
             return (
               <div className='circle-cmp app__flex' key={item + index}>
                 <div>

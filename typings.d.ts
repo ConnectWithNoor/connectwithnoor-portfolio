@@ -15,6 +15,11 @@ type ProjectType = {
   tags: { name: string; _id: string }[];
 };
 
+type TagsType = {
+  _id: string;
+  name: string;
+};
+
 type SkillType = {
   _id: string;
   icon: Image;
