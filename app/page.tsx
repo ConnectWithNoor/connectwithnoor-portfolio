@@ -15,9 +15,13 @@ export default function Home() {
     <main className='app'>
       <Navbar />
       <Header />
+      {/* @ts-expect-error Server Component */}
       <About />
+      {/* @ts-expect-error Server Component */}
       <Projects />
+      {/* @ts-expect-error Server Component */}
       <Skills />
+      {/* @ts-expect-error Server Component */}
       <Testinomials />
       <Footer />
     </main>
