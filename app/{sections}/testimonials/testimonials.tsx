@@ -5,7 +5,7 @@ import TestimonialsUI from './testimonialsUI';
 import './testimonials.scss';
 
 async function Testinomials() {
-  const response = await fetch(`${process.env.API_ROOT}/api/testimonials`);
+  const response = await fetch(`https://techsume.vercel.app/api/testimonials`);
 
   const testimonialsData: TestimonialType[] = await response.json();
 

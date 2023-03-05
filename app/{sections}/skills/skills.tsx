@@ -61,7 +61,7 @@ const rightVariant: Variants = {
 };
 
 async function fetchData() {
-  const response = await fetch(`${process.env.API_ROOT}/api/skills`, {
+  const response = await fetch(`https://techsume.vercel.app/api/skills`, {
     method: 'GET',
   });
 
