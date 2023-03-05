@@ -22,7 +22,7 @@ const divVariant: Variants = {
 };
 
 async function AboutSection() {
-  const response = await fetch(`https://techsume.vercel.app/api/about`, {
+  const response = await fetch(`${process.env.API_ROOT}api/about`, {
     method: 'GET',
   });
 

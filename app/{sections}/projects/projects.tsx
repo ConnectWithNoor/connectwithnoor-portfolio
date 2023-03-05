@@ -5,7 +5,7 @@ import ProjectsUI from './projectsUI';
 import './projects.scss';
 
 async function fetchData() {
-  const response = await fetch(`https://techsume.vercel.app/api/projects`, {
+  const response = await fetch(`${process.env.API_ROOT}api/projects`, {
     method: 'GET',
   });
 
