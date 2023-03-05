@@ -60,24 +60,24 @@ const rightVariant: Variants = {
   },
 };
 
-async function fetchData() {
-  const response = await fetch(`${process.env.API_ROOT}/api/skills`, {
-    method: 'GET',
-  });
+// async function fetchData() {
+//   const response = await fetch(`${process.env.API_ROOT}/api/skills`, {
+//     method: 'GET',
+//   });
 
-  const { skillsData, expData } = (await response.json()) as {
-    skillsData: SkillType[];
-    expData: ExperienceType[];
-  };
+//   const { skillsData, expData } = (await response.json()) as {
+//     skillsData: SkillType[];
+//     expData: ExperienceType[];
+//   };
 
-  return {
-    skillsData,
-    expData,
-  };
-}
+//   return {
+//     skillsData,
+//     expData,
+//   };
+// }
 
 async function Skills() {
-  const { expData, skillsData } = await fetchData();
+  // const { expData, skillsData } = await fetchData();
 
   return (
     <SectionWrapper idName='skills' className='app__whitebg'>
@@ -85,7 +85,7 @@ async function Skills() {
         <h2 className='head-text'>Skills & Experience</h2>
         <div className='app__skills-container'>
           {/* left skills part */}
-          <div className='app__skills-list'>
+          {/* <div className='app__skills-list'>
             {skillsData.map((skill, index) => (
               <MotionDivWrapper
                 key={skill._id + index}
@@ -108,10 +108,10 @@ async function Skills() {
                 <p className='p-text'>{skill.name}</p>
               </MotionDivWrapper>
             ))}
-          </div>
+          </div> */}
 
           {/* right experience part */}
-          <div className='app__skills-exp'>
+          {/* <div className='app__skills-exp'>
             {expData.map((experience) => {
               return (
                 <MotionDivWrapper
@@ -149,7 +149,7 @@ async function Skills() {
                 </MotionDivWrapper>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </SectionWrapper>

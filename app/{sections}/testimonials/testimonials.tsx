@@ -5,9 +5,9 @@ import TestimonialsUI from './testimonialsUI';
 import './testimonials.scss';
 
 async function Testinomials() {
-  const response = await fetch(`${process.env.API_ROOT}/api/testimonials`);
+  // const response = await fetch(`${process.env.API_ROOT}/api/testimonials`);
 
-  const testimonialsData: TestimonialType[] = await response.json();
+  // const testimonialsData: TestimonialType[] = await response.json();
 
   return (
     <SectionWrapper idName='testimonials' className='app__primarybg'>
@@ -16,9 +16,9 @@ async function Testinomials() {
         Words that are
         <span> Trustable </span>
       </h2>
-      {testimonialsData.length ? (
+      {/* {testimonialsData.length ? (
         <TestimonialsUI testimonialsData={testimonialsData} />
-      ) : null}
+      ) : null} */}
     </SectionWrapper>
   );
 }

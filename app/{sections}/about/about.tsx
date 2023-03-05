@@ -22,11 +22,11 @@ const divVariant: Variants = {
 };
 
 async function AboutSection() {
-  const response = await fetch(`${process.env.API_ROOT}/api/about`, {
-    method: 'GET',
-  });
+  // const response = await fetch(`${process.env.API_ROOT}/api/about`, {
+  //   method: 'GET',
+  // });
 
-  const aboutMeData: AboutMeType[] = await response.json();
+  // const aboutMeData: AboutMeType[] = await response.json();
 
   return (
     <SectionWrapper idName='about' className='app__whitebg'>
@@ -39,7 +39,7 @@ async function AboutSection() {
           means Good Business
         </h2>
 
-        <div className='app__profiles'>
+        {/* <div className='app__profiles'>
           {aboutMeData.map((item) => {
             return (
               <MotionDivWrapper
@@ -64,7 +64,7 @@ async function AboutSection() {
               </MotionDivWrapper>
             );
           })}
-        </div>
+        </div> */}
       </div>
     </SectionWrapper>
   );
