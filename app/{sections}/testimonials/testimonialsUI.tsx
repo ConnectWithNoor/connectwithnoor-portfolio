@@ -1,7 +1,7 @@
 'use client';
 
 import { MotionDivWrapper } from '@/app/{components}';
-import { urlFor } from '@/lib/sanity';
+import { urlFor } from '@/app/{lib}/sanity';
 import { AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';

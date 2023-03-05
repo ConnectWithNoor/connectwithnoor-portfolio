@@ -6,7 +6,7 @@ import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { useState } from 'react';
 
 import { MotionDivWrapper } from '@/app/{components}';
-import { urlFor } from '@/lib/sanity';
+import { urlFor } from '@/app/{lib}/sanity';
 
 type Props = {
   projectsData: ProjectType[];

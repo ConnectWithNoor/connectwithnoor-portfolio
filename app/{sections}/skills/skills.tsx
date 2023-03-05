@@ -1,10 +1,7 @@
-import { fetchSkills } from '@/app/{api}/fetchSkills';
-import { fetchExperiences } from '@/app/{api}/fetchExperiences';
-
 import Image from 'next/image';
 import { Variants } from 'framer-motion';
 
-import { urlFor } from '@/lib/sanity';
+import { urlFor } from '@/app/{lib}/sanity';
 import {
   MotionDivWrapper,
   SectionWrapper,
@@ -63,9 +60,24 @@ const rightVariant: Variants = {
   },
 };
 
+async function fetchData() {
+  const response = await fetch(`${process.env.API_ROOT}/api/skills`, {
+    method: 'GET',
+  });
+
+  const { skillsData, expData } = (await response.json()) as {
+    skillsData: SkillType[];
+    expData: ExperienceType[];
+  };
+
+  return {
+    skillsData,
+    expData,
+  };
+}
+
 async function Skills() {
-  const skillsData = await fetchSkills();
-  const experiencesData = await fetchExperiences();
+  const { expData, skillsData } = await fetchData();
 
   return (
     <SectionWrapper idName='skills' className='app__whitebg'>
@@ -100,7 +112,7 @@ async function Skills() {
 
           {/* right experience part */}
           <div className='app__skills-exp'>
-            {experiencesData.map((experience) => {
+            {expData.map((experience) => {
               return (
                 <MotionDivWrapper
                   variants={rightContainerVariant}

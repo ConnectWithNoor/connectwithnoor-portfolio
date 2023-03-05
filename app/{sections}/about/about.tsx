@@ -1,8 +1,7 @@
-import { fetchAboutMe } from '@/app/{api}/fetchAboutMe';
 import { Variants } from 'framer-motion';
 import Image from 'next/image';
 
-import { urlFor } from '@/lib/sanity';
+import { urlFor } from '@/app/{lib}/sanity';
 import { SectionWrapper, MotionDivWrapper } from '@/app/{components}';
 import './about.scss';
 
@@ -23,7 +22,11 @@ const divVariant: Variants = {
 };
 
 async function AboutSection() {
-  const aboutMeData = await fetchAboutMe();
+  const response = await fetch(`${process.env.API_ROOT}/api/about`, {
+    method: 'GET',
+  });
+
+  const aboutMeData: AboutMeType[] = await response.json();
 
   return (
     <SectionWrapper idName='about' className='app__whitebg'>

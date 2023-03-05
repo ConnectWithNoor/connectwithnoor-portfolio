@@ -1,14 +1,27 @@
 import { SectionWrapper } from '@/app/{components}';
-import { fetchProjects } from '@/app/{api}/fetchProjects';
 
 import ProjectsUI from './projectsUI';
-import { fetchTags } from '@/app/{api}/fetchTags';
 
 import './projects.scss';
 
+async function fetchData() {
+  const response = await fetch(`${process.env.API_ROOT}/api/projects`, {
+    method: 'GET',
+  });
+
+  const { tagsData, projectsData } = (await response.json()) as {
+    tagsData: TagsType[];
+    projectsData: ProjectType[];
+  };
+
+  return {
+    tagsData,
+    projectsData,
+  };
+}
+
 async function ProjectsSection() {
-  const projectsData = await fetchProjects();
-  const tagsData = await fetchTags();
+  const { tagsData, projectsData } = await fetchData();
 
   return (
     <SectionWrapper idName='projects' className='app__primarybg'>

@@ -1,12 +1,13 @@
-import { fetchTestimonials } from '@/app/{api}/fetchTestimonials';
-
 import { SectionWrapper } from '@/app/{components}';
 
-import './testimonials.scss';
 import TestimonialsUI from './testimonialsUI';
 
+import './testimonials.scss';
+
 async function Testinomials() {
-  const testimonialsData = await fetchTestimonials();
+  const response = await fetch(`${process.env.API_ROOT}/api/testimonials`);
+
+  const testimonialsData: TestimonialType[] = await response.json();
 
   return (
     <SectionWrapper idName='testimonials' className='app__primarybg'>

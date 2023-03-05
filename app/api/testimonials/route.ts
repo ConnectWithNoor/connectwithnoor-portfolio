@@ -1,7 +1,8 @@
-import { sanityClient } from '@/lib/sanity';
+import { sanityClient } from '@/app/{lib}/sanity';
 import { groq } from 'next-sanity';
+import { NextResponse } from 'next/server';
 
-export async function fetchTestimonials() {
+export async function GET() {
   const query = groq`
    *[_type == "testimonials"] {
    _id, name, imageUrl, feedback, company
@@ -10,5 +11,5 @@ export async function fetchTestimonials() {
 
   const testimonials: TestimonialType[] = await sanityClient.fetch(query);
 
-  return testimonials;
+  return NextResponse.json(testimonials);
 }

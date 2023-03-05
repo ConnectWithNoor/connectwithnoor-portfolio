@@ -5,7 +5,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { SectionWrapper } from '@/app/{components}';
 import './footer.scss';
-import { postContact } from '@/app/{api}/postContact';
+// import { postContact } from '@/app/api/postContact';
 
 function Footer() {
   const [{ email, fullName, message }, setFormData] = useState({
@@ -14,6 +14,7 @@ function Footer() {
     message: '',
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isError, setIsError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (
@@ -30,18 +31,27 @@ function Footer() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setIsError(null);
 
     const contact = {
-      _type: 'contact',
       name: fullName,
       email,
       message,
     };
 
-    const response = await postContact(contact);
+    const response = await fetch(`/api/contact`, {
+      method: 'POST',
+      body: JSON.stringify(contact),
+    });
 
-    if (response._id) {
+    const { senderConfirmation, receivedMessage } = await response.json();
+
+    if (senderConfirmation && receivedMessage) {
       setIsFormSubmitted(true);
+    } else {
+      setIsError(
+        'Something Went Wrong. Please contact directly at connectwithnoor1@gmail.com'
+      );
     }
 
     setIsLoading(false);
@@ -78,6 +88,10 @@ function Footer() {
           <div>
             <h3 className='head-text'>Thank you for getting in touch</h3>
           </div>
+        ) : isError ? (
+          <div>
+            <h3 className='head-text'>{isError}</h3>
+          </div>
         ) : (
           <form className='app__footer-form app__flex' onSubmit={handleSubmit}>
             <div className='app__flex'>
@@ -95,7 +109,7 @@ function Footer() {
             <div className='app__flex'>
               <input
                 className='p-text'
-                type='text'
+                type='email'
                 required
                 placeholder='Your Email'
                 name='email'
