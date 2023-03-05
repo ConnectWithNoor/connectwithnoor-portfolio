@@ -59,8 +59,8 @@ function Footer() {
             <div>
               <Image src='/email.png' alt='email' fill />
             </div>
-            <a href='mailto:email@yourmail.com' className='p-text'>
-              email@yourmail.com
+            <a href='mailto:connectwithnoor1@gmail.com' className='p-text'>
+              connectwithnoor1@gmail.com
             </a>
           </div>
 
@@ -68,8 +68,8 @@ function Footer() {
             <div>
               <Image src='/mobile.png' alt='mobile' fill />
             </div>
-            <a href='tel: +1 (123) 456-789' className='p-text'>
-              +1 (123) 456-789
+            <a href='tel: +92 (324) 823-5405' className='p-text'>
+              +92 (324) 823-5405
             </a>
           </div>
         </div>

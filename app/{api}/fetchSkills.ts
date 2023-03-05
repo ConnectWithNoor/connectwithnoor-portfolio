@@ -3,8 +3,8 @@ import { groq } from 'next-sanity';
 
 export async function fetchSkills() {
   const query = groq`
-  *[_type == "skill"] {
-     _id, name, icon, bgColor
+  *[_type == "skills"] {
+     _id, name, icon
     }
   `;
 
