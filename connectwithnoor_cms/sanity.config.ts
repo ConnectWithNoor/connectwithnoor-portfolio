@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'techsume_cms',
+  title: 'connectwithnoor_cms',
 
   projectId: 'wkbxlza1',
   dataset: 'production',

@@ -25,5 +25,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "techsume_cms"]
+  "exclude": ["node_modules", "connectwithnoor_cms"]
 }

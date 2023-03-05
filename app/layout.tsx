@@ -20,9 +20,9 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: 'Techsume | Developer Resume',
+  title: 'ConnectWithNoor | Developer Resume',
   description:
-    'Developer resume to showcase your skills, portfolio and testimonials to potential clients',
+    'ConnectWithNoor developer resume is to showcase your skills, portfolio and testimonials to potential clients',
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
