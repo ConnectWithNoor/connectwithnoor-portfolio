@@ -29,5 +29,3 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
 };
-
-export const revalidate = 3600; // 60 mins
