@@ -24,6 +24,9 @@ const divVariant: Variants = {
 async function AboutSection() {
   const response = await fetch(`${process.env.API_ROOT}api/about`, {
     method: 'GET',
+    next: {
+      revalidate: 3600, // 60 mins
+    },
   });
 
   const aboutMeData: AboutMeType[] = await response.json();

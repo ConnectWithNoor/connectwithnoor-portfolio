@@ -5,7 +5,11 @@ import TestimonialsUI from './testimonialsUI';
 import './testimonials.scss';
 
 async function Testinomials() {
-  const response = await fetch(`${process.env.API_ROOT}api/testimonials`);
+  const response = await fetch(`${process.env.API_ROOT}api/testimonials`, {
+    next: {
+      revalidate: 3600, // 60 mins
+    },
+  });
 
   const testimonialsData: TestimonialType[] = await response.json();
 

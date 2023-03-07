@@ -7,6 +7,9 @@ import './projects.scss';
 async function fetchData() {
   const response = await fetch(`${process.env.API_ROOT}api/projects`, {
     method: 'GET',
+    next: {
+      revalidate: 3600, // 60 mins
+    },
   });
 
   const { tagsData, projectsData } = (await response.json()) as {

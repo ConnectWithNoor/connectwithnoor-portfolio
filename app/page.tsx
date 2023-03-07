@@ -27,6 +27,3 @@ export default function Home() {
     </main>
   );
 }
-
-export const dynamic = 'force-dynamic';
-export const revalidate = 3600; // 60 mins

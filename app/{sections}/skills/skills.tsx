@@ -63,6 +63,9 @@ const rightVariant: Variants = {
 async function fetchData() {
   const response = await fetch(`${process.env.API_ROOT}api/skills`, {
     method: 'GET',
+    next: {
+      revalidate: 3600, // 60 mins
+    },
   });
 
   const { skillsData, expData } = (await response.json()) as {
