@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-import './globals.css';
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
@@ -20,12 +20,12 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: 'ConnectWithNoor | Developer Resume',
+  title: "ConnectWithNoor | Developer Resume",
   description:
-    'ConnectWithNoor developer resume is to showcase your skills, portfolio and testimonials to potential clients',
+    "ConnectWithNoor developer resume is to showcase your skills, portfolio and testimonials to potential clients",
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
