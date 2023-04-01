@@ -1,8 +1,8 @@
-import { SectionWrapper } from '@/app/{components}';
+import { SectionWrapper } from "@/app/{components}";
 
-import TestimonialsUI from './testimonialsUI';
+import TestimonialsUI from "./testimonialsUI";
 
-import './testimonials.scss';
+import "./testimonials.scss";
 
 async function Testinomials() {
   const response = await fetch(`${process.env.API_ROOT}api/testimonials`, {
@@ -14,9 +14,9 @@ async function Testinomials() {
   const testimonialsData: TestimonialType[] = await response.json();
 
   return (
-    <SectionWrapper idName='testimonials' className='app__primarybg'>
+    <SectionWrapper idName="testimonials" className="app__primarybg">
       {/* heading */}
-      <h2 className='head-text'>
+      <h2 className="head-text">
         Words that are
         <span> Trustable </span>
       </h2>
