@@ -1,5 +1,5 @@
-import { confirmationToSender, receiveMessage } from '@/app/{lib}/nodemailer';
-import { NextResponse } from 'next/server';
+import { confirmationToSender, receiveMessage } from "@/lib/nodemailer";
+import { NextResponse } from "next/server";
 
 type Props = {
   name: string;

@@ -1,6 +1,6 @@
-import { sanityClient } from '@/app/{lib}/sanity';
-import { groq } from 'next-sanity';
-import { NextResponse } from 'next/server';
+import { sanityClient } from "@/lib/sanity";
+import { groq } from "next-sanity";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   const tagsQuery = groq`

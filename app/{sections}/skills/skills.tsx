@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import { Variants } from 'framer-motion';
+import Image from "next/image";
+import { Variants } from "framer-motion";
 
-import { urlFor } from '@/app/{lib}/sanity';
+import { urlFor } from "@/lib/sanity";
 import {
   MotionDivWrapper,
   SectionWrapper,
   TooltipWrapper,
-} from '@/app/{components}';
+} from "@/app/{components}";
 
-import './skills.scss';
-import 'react-tooltip/dist/react-tooltip.css';
+import "./skills.scss";
+import "react-tooltip/dist/react-tooltip.css";
 
 const leftVariant: Variants = {
   hidden: {
@@ -23,7 +23,7 @@ const leftVariant: Variants = {
     scale: 1,
     transition: {
       duration: 0.25,
-      type: 'tween',
+      type: "tween",
     },
   },
   hover: { scale: 1.1 },
@@ -38,7 +38,7 @@ const rightContainerVariant: Variants = {
     transition: {
       duration: 0.25,
       staggerChildren: 0.25,
-      type: 'tween',
+      type: "tween",
     },
   },
 };
@@ -55,14 +55,14 @@ const rightVariant: Variants = {
     scale: 1,
     transition: {
       duration: 0.25,
-      type: 'tween',
+      type: "tween",
     },
   },
 };
 
 async function fetchData() {
   const response = await fetch(`${process.env.API_ROOT}api/skills`, {
-    method: 'GET',
+    method: "GET",
     next: {
       revalidate: 3600, // 60 mins
     },
@@ -83,20 +83,20 @@ async function Skills() {
   const { expData, skillsData } = await fetchData();
 
   return (
-    <SectionWrapper idName='skills' className='app__whitebg'>
+    <SectionWrapper idName="skills" className="app__whitebg">
       <div>
-        <h2 className='head-text'>Skills & Experience</h2>
-        <div className='app__skills-container'>
+        <h2 className="head-text">Skills & Experience</h2>
+        <div className="app__skills-container">
           {/* left skills part */}
-          <div className='app__skills-list'>
+          <div className="app__skills-list">
             {skillsData.map((skill, index) => (
               <MotionDivWrapper
                 key={skill._id + index}
                 variants={leftVariant}
-                className='app__skills-item app__flex'
+                className="app__skills-item app__flex"
               >
                 <div
-                  className='app__flex'
+                  className="app__flex"
                   style={{ backgroundColor: skill.bgColor }}
                 >
                   <div>
@@ -108,41 +108,41 @@ async function Skills() {
                   </div>
                 </div>
 
-                <p className='p-text'>{skill.name}</p>
+                <p className="p-text">{skill.name}</p>
               </MotionDivWrapper>
             ))}
           </div>
 
           {/* right experience part */}
-          <div className='app__skills-exp'>
+          <div className="app__skills-exp">
             {expData.map((experience) => {
               return (
                 <MotionDivWrapper
                   variants={rightContainerVariant}
                   key={experience._id}
-                  className='app__skills-exp-item'
+                  className="app__skills-exp-item"
                 >
-                  <div className='app__skills-exp-year'>
-                    <p className='bold-text'>{experience.year}</p>
+                  <div className="app__skills-exp-year">
+                    <p className="bold-text">{experience.year}</p>
                   </div>
 
-                  <div className='app__skills-exp-works'>
+                  <div className="app__skills-exp-works">
                     {experience.works.map((work) => (
                       <div key={work._id}>
                         <MotionDivWrapper
                           variants={rightVariant}
-                          className='app__skills-exp-work'
+                          className="app__skills-exp-work"
                         >
                           <div data-tooltip-id={work._id}>
-                            <h4 className='bold-text'>{work.position}</h4>
+                            <h4 className="bold-text">{work.position}</h4>
 
-                            <p className='p-text'>{work.company}</p>
+                            <p className="p-text">{work.company}</p>
                           </div>
                         </MotionDivWrapper>
 
                         <TooltipWrapper
                           id={work._id}
-                          className='skills-tooltip'
+                          className="skills-tooltip"
                         >
                           {work.desc}
                         </TooltipWrapper>
