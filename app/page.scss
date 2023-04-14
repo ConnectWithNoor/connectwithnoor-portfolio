@@ -232,3 +232,22 @@
     cursor: pointer;
   }
 }
+
+.calendly-btn {
+  background-color: #313bac;
+  color: #fff;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3e47a9;
+    transition: all;
+  }
+}

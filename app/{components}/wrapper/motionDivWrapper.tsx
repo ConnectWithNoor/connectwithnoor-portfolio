@@ -18,6 +18,7 @@ function MotionDivWrapper({ variants, children, className, style }: Props) {
       whileInView="show"
       exit="exit"
       whileHover="hover"
+      animate="animate"
       className={className}
       style={style}
     >

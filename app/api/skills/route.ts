@@ -14,7 +14,7 @@ export async function GET() {
   _id, year, works[] -> {
     _id, position, desc, company
   }
-}
+} | order(year desc)
   `;
 
   const promise = [
