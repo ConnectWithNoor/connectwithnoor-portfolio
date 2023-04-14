@@ -54,10 +54,12 @@ function ProjectsUI({ projectsData, tagsData }: Props) {
   const handleWorkFilter = (item: string) => {
     setActiveFilter(item);
 
+    const filteredProjects = projectsData.filter((project) =>
+      project.tags.some((tag) => tag.name === item)
+    );
+
     setFilteredProject(
-      projectsData.filter((project) =>
-        project.tags.some((tag) => tag.name === item)
-      )
+      item === "all" ? filteredProjects.slice(0, 4) : filteredProjects
     );
   };
 
