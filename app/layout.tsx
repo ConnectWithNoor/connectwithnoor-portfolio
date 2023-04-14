@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+import Modal from "./{components}/alert/Alert";
+import ToasterProvider from "./{components}/alert/ToasterProvider";
 import PopupWidgetWrapper from "./{components}/wrapper/popupWidgetWrapper";
 
 export default function RootLayout({
@@ -18,7 +20,10 @@ export default function RootLayout({
       <body>
         <div id="calendly-widget" />
         <div id="calendly-btn" />
+
+        <ToasterProvider />
         <PopupWidgetWrapper />
+        <Modal />
         {children}
       </body>
     </html>
