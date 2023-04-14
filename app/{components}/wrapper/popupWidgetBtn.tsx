@@ -1,6 +1,7 @@
 "use client";
 
 import { Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import { PopupButton } from "react-calendly";
 import MotionDivWrapper from "./motionDivWrapper";
 
@@ -12,6 +13,16 @@ const variant: Variants = {
 };
 
 function PopupWidgetBtn() {
+  const [isMount, setIsMount] = useState(false);
+
+  useEffect(() => {
+    setIsMount(true);
+  }, []);
+
+  if (!isMount) {
+    return null;
+  }
+
   return (
     <MotionDivWrapper variants={variant}>
       <PopupButton

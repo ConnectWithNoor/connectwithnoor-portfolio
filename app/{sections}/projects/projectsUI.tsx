@@ -48,8 +48,9 @@ const IconVariant: Variants = {
 
 function ProjectsUI({ projectsData, tagsData }: Props) {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [filteredProject, setFilteredProject] =
-    useState<ProjectType[]>(projectsData);
+  const [filteredProject, setFilteredProject] = useState<ProjectType[]>(
+    projectsData.slice(0, 4)
+  );
 
   const handleWorkFilter = (item: string) => {
     setActiveFilter(item);
